@@ -13,5 +13,9 @@ module.exports.signup_get = (req, res) => {
   }
   
   module.exports.login_post = async (req, res) => {
+    // access req json data => app.use(express.json()) parse it => js object -> acess in req.body 
+    // console.log(req.body);
+    const { email, password } = req.body;
+    console.log(email, password);
     res.send('user login');
   }

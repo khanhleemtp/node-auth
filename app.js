@@ -10,6 +10,10 @@ const app = express();
 // middleware
 app.use(express.static('public'));
 
+// take any json data that comes along with request and parse it into js object => we can use inside code
+app.use(express.json())
+
+
 // set view engine
 app.set('view engine', 'ejs');
 

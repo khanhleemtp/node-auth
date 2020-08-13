@@ -7,3 +7,7 @@
 + /logout - GET log a user out
 
 ======================================================
+# 3. Testing routes && handing post request
+- take any json data that comes along with request and parse it into js object => we can use inside code
+- => app.use(express.json())
+- access req json data => app.use(express.json()) parse it => js object -> acess in req.body 
