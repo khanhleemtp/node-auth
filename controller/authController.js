@@ -41,7 +41,7 @@ module.exports.signup_get = (req, res) => {
     const { email, password } = req.body;
     try {
       // to do something
-      const user = await User.create({ email, password });
+        const user = await User.create({ email, password });
       res.status(201).json(user);
     } catch (err) {
       // error

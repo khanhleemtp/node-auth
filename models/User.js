@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const { isEmail } = require('validator');
+const bycrypt = require('bcryptjs');
+require('dotenv').config();
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -24,9 +26,12 @@ userSchema.post('save', (doc, next) => {
 })
 
 // fire a function before saved to db 
-userSchema.pre('save', function(next) {
+userSchema.pre('save', async function(next) {
     // this is pointing to instance of User save to db (in authController.js: const user = await User.create({ email, password }))
     console.log('User about to be created and saved', this);
+    const salt = await bycrypt.genSalt();
+    console.log(salt);
+    this.password = await bycrypt.hash(this.password, salt);
     next();
 })
 

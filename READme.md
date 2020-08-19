@@ -78,3 +78,6 @@ userSchema.pre('save', function(next) {
 - this: instance of model 
 
 ==============================================================
+# 7. Hashing password    
+- password: plain text -> hash
+- (salt + password) -> hashing algorithm -> %5sfffm..
