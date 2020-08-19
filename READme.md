@@ -81,3 +81,10 @@ userSchema.pre('save', function(next) {
 # 7. Hashing password    
 - password: plain text -> hash
 - (salt + password) -> hashing algorithm -> %5sfffm..
+
+==========================================================
+# 8.auth views
+- const form = document.querySelector('form');
+- const email = form.email.value;
+
+=========================================================
