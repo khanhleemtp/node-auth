@@ -1,11 +1,15 @@
 // const express = require('express');
 
-// const router = express.Router;
+// const router = express.Router();
 
 const { Router } = require('express');
+
+// intance of router
+const router = Router();
+
 const authController = require('../controller/authController');
 
-const router = Router();
+
 
 router.get('/signup', authController.signup_get)
 router.post('/signup', authController.signup_post)

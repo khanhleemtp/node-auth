@@ -31,4 +31,6 @@ mongoose.connect(process.env.MONGO_URI, {
 // routes
 app.get('/', (req, res) => res.render('home'));
 app.get('/smoothies', (req, res) => res.render('smoothies'));
+
+// middlewware 
 app.use(authRoute); 
