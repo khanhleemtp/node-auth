@@ -36,41 +36,42 @@
 # 5. Mongoose validation 
 - Ex: 'Please enter an email',  'Please enter a valid email'
 - handle error: 
-<!-- * const handleError = (err) => {
-    console.log(err.message, err.code);
-    const errors = { email: '', password: '' };
-
-    // duplicate error code (validate unique: true in User Schema)
-    if (err.code === 11000 ) {
-      errors.email = 'That email is already registered';
-      return errors;
-    } 
-    // validation errors
-    if(err.message.includes('user validation failed')) {
-        console.log('obj', Object.values(err.errors));
-        Object.values(err.errors).forEach(({ properties }) => {
-          console.log(properties);
-          errors[properties.path] = properties.message;
-        })
-    }
-    return errors;  --> 
-} 
+* const handleError = (err) => {
+*    console.log(err.message, err.code);
+*     const errors = { email: '', password: '' };
+* 
+*   // duplicate error code (validate unique: true in User Schema)
+*    if (err.code === 11000 ) {
+*       errors.email = 'That email is already registered';
+*       return errors;
+*     } 
+*     // validation errors
+*     if(err.message.includes('user validation failed')) {
+*        console.log('obj', Object.values(err.errors));
+*         Object.values(err.errors).forEach(({ properties }) => {
+*           console.log(properties);
+*           errors[properties.path] = properties.message;
+*         })
+*     }
+*     return errors;  
+*  } 
 - send to client 
 =============================================================
 # 6. Mongoose hook  
 # after or before saved in db
-<!-- // fire a function afer saved to db
-userSchema.post('save', (doc, next) => {
-    console.log('New user was saved and created: ', doc );
-    next();
-})
+*  // fire a function afer saved to db
+*  userSchema.post('save', (doc, next) => {
+*     console.log('New user was saved and created: ', doc );
+*    next();
+* })
 
-// fire a function before saved to db 
-userSchema.pre('save', function(next) {
-    // this is pointing to instance of User save to db (in authController.js: const user = await User.create({ email, password }))
-    console.log('User about to be created and saved', this);
-    next();
-}) -->
+*  // fire a function before saved to db 
+*  userSchema.pre('save', function(next) {
+*     // this is pointing to instance of User save to db (in authController.js: const user = await User.create({ email, password }))
+*     console.log('User about to be created and saved', this);
+*     next();
+* })
+
 - post: middleware are executed after the hooked method and all of its pre middleware have completed.
 - pre: Pre middleware functions are executed one after another, when each middleware calls next.
 - save: method of mongoose 
