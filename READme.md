@@ -71,7 +71,8 @@ userSchema.pre('save', function(next) {
     console.log('User about to be created and saved', this);
     next();
 }) -->
-- post: http request
+- post: middleware are executed after the hooked method and all of its pre middleware have completed.
+- pre: Pre middleware functions are executed one after another, when each middleware calls next.
 - save: method of mongoose 
 - doc: document in db
 - next: middleware when you call to allow continue process
@@ -88,3 +89,18 @@ userSchema.pre('save', function(next) {
 - const email = form.email.value;
 
 =========================================================
+# 9.cookies primer
+- Cookies 
++ Store data in a user's browser: name:Ld, age: 30, isEmpty: true
++ Server(config: cookies) <---------> Browser(access to server )
+- res.setHeader('Set-Cookie', 'newUser=true')
+- middleware cookie-parser
+* set-cookie
++ const cookieParse = require('cookie-parser');
++ res.cookie('newUser', true, { httpOnly: true, secure: true, maxAge: 1000*60*60*24 })
++ secure: use only https
++ httpOnly: brower not access to cookie through to document.cookie
++ maxAge: mili second
+- > time in session = maxAge, default: when I close browser -> reset cookie, server-config
+- const cookies = req.cookies <-> res.json(cookies);
+
