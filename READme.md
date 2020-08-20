@@ -107,10 +107,10 @@
 
 ================================================================
 # 10. json web tokens (theory)
-- > Browser(login-form) -----email, pass------> Server -------> check credentials in db 
-  > Server --------jwt(to be encoded and store in cookies)--------> browser (use authenticate)
-  > Use each request browser --------jwt---------> server( verify the jwt identify the user)
-  > csrf (expose cookie, endpoint) -> Hacker Access server, change data, ....
+- > + Browser(login-form) -----email, pass------> Server -------> check credentials in db 
+  > + Server --------jwt(to be encoded and store in cookies)--------> browser (use authenticate)
+  > +  Use each request browser --------jwt---------> server( verify the jwt identify the user)
+  > + csrf (expose cookie, endpoint) -> Hacker Access server, change data, ....
 
 - Jwt signing
 + Header: Tell the server the type of signature is being used(meta)
