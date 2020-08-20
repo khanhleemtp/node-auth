@@ -105,3 +105,18 @@
 - > time in session = maxAge, default: when I close browser -> reset cookie, server-config
 - const cookies = req.cookies <-> res.json(cookies);
 
+================================================================
+# 10. json web tokens (theory)
+- > Browser(login-form) -----email, pass------> Server -------> check credentials in db 
+  > Server --------jwt(to be encoded and store in cookies)--------> browser (use authenticate)
+  > Use each request browser --------jwt---------> server( verify the jwt identify the user)
+  > csrf (expose cookie, endpoint) -> Hacker Access server, change data, ....
+
+- Jwt signing
++ Header: Tell the server the type of signature is being used(meta)
++ Payload: Used to identify the user(eg: contains user id)
++ Verify signature: Makes the token secure(like a stamp of authenticity)
+
+ > Header ---->
+ >          signature -------------> hashed together --------- secret('secure secret string(sever use to authen)')                  
+ > Payload ---> 
