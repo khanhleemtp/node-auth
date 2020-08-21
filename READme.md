@@ -120,3 +120,22 @@
  > Header ---->
  >          signature -------------> hashed together --------- secret('secure secret string(sever use to authen)')                  
  > Payload ---> 
+ > Headers.Payload.Signature
+
+=================================================================
+# 11. new user Signup
+- views/signup
++ const res = try {
+* await fetch('/signup', { metho: 'POST', body: JSON.stringify(email, password), header: {'Content-type': 'application/json'} })
+* } catch (err => console.log(err)) 
+
+- server
+- const maxAge = 3 * 60 * 60 * 24;
+- const createToken = (id) => {
++ return jwt.sign( { id }, process.env.JWT_SECRET , {
++     expiresIn: maxAge 
++    });
++ }
+
+- const token = createToken(user._id)
+- res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 })
